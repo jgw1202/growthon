@@ -1,0 +1,332 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="utf-8"/>
+    <title>언어몰랑</title>
+    <script defer type="module" src="./index.js"></script>
+    <link rel="stylesheet" href="style.css" />
+    <link rel="icon" href="./img/logotag.PNG" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.5.1/styles/default.min.css" />\
+    <style>
+        body {
+            font-family: 'Pretendard', sans-serif;
+            background-color: #f2f2f2;
+            color: #333;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        nav {
+            position: fixed;
+            width: 100%;
+            top: 0;
+            margin-bottom: 4px;
+            background-color: rgba(255, 255, 255, 0.918);
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            padding: 10px 20px;
+            z-index: 10000;
+        }
+
+        ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            justify-content: left;
+        }
+
+        li {
+            display: inline-block;
+            margin: 10px;
+            text-align: center;
+            vertical-align: middle;
+        }
+
+        a {
+            display: inline-block;
+            text-decoration: none;
+            color: black;
+            font-weight: bold;
+            vertical-align: middle;
+            height: 26px;
+        }
+
+        span {
+            display: inline-block;
+            vertical-align: middle;
+            margin-top: 4px;
+        }
+
+        .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            padding: 20px;
+            width: 100%;
+            height: calc(100vh - 80px); /* nav와의 여백 포함 */
+            margin-top: 60px;
+        }
+
+        .left-panel, .right-panel {
+            flex: 1;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 10px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            margin: 10px;
+            display: flex;
+            flex-direction: column;
+            height: 100%;
+            box-sizing: border-box;
+            overflow: auto; /* 스크롤 처리 추가 */
+        }
+
+        .original-response {
+            flex: 1;
+            overflow: auto; /* 스크롤 처리 추가 */
+        }
+
+
+        .logo {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .logo img {
+            width: 100px;
+            height: auto;
+        }
+
+        .box {
+            flex: 1;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 10px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            margin-bottom: 20px;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .box textarea {
+            flex: 1;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-size: 14px;
+            resize: none;
+        }
+
+        .section {
+            margin-bottom: 20px;
+            padding: 20px;
+            background-color: #f9f9f9;
+            border-radius: 10px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            overflow: auto; /* 스크롤 처리 추가 */
+        }
+
+        .section h2 {
+            margin-top: 0;
+        }
+
+        .deleteButton {
+            padding: 5px 10px;
+            border: none;
+            background-color: #ff6f61;
+            color: white;
+            cursor: pointer;
+            border-radius: 5px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+        }
+
+
+
+        .deleteButton:hover {
+            background-color: #ff8f81;
+        }
+
+        .storeButton {
+            padding: 5px 10px;
+            border: none;
+            background-color: #748EE8;
+            color: white;
+            cursor: pointer;
+            border-radius: 5px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+        }
+
+        .storeButton:hover {
+            background-color: #9EB0E8;
+        }
+
+        .allStoreButton {
+            padding: 5px 10px;
+            border: none;
+            background-color: #748EE8;
+            color: white;
+            cursor: pointer;
+            border-radius: 5px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+        }
+
+        .allStoreButton:hover {
+            background-color: #9EB0E8;
+        }
+
+        .info-message {
+            text-align: center;
+            margin-top: 20px;
+            color: #666;
+        }
+
+        .rectangle {
+            width: 50px;
+            height: 5px;
+            background-color: #ff6f61;
+            margin: 5px auto;
+        }
+
+        .chat {
+            display: flex;
+            align-items: flex-start;
+            padding: 10px;
+            margin: 10px 0;
+            border-radius: 10px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        .my-chat {
+            background-color: #e0f7fa;
+            align-self: flex-end;
+        }
+
+        .gpt-chat {
+            background-color: #ffe0b2;
+        }
+
+        .profile {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            margin-right: 10px;
+        }
+
+        .chat-name {
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+
+        .chat-log {
+            flex: 1;
+        }
+
+        .spinner {
+            width: 20px;
+            height: 20px;
+        }
+
+        .actionButton {
+            background-color: gray;
+            border: none;
+            color: white;
+            padding: 10px 20px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 16px;
+            margin: 4px 2px;
+            cursor: not-allowed;
+            border-radius: 4px;
+        }
+
+        .actionButton.enabled {
+            background-color: black;
+            cursor: pointer;
+        }
+    </style>
+    <script defer type="module" src="./js/index.js">
+    </script>
+</head>
+<body>
+<nav>
+    <ul>
+        <li>
+            <a href="#">
+                <img src="./img/menu-new.png" style="width: 26px; height: 26px; margin: 0"/>
+            </a>
+            <a href="#" onclick = "location.href = '/logout'">
+                <span>로그아웃</span>
+            </a>
+
+        </li>
+
+        <li>
+            <a href="storageList.html">
+                <span>보관함</span>
+            </a>
+        </li>
+    </ul>
+</nav>
+<div class="container">
+    <div class="left-panel">
+        <div class="logo">
+            <img src="./img/logotag.PNG" />
+        </div>
+
+        <div id="original-response" class="original-response">
+            <!-- AI 응답을 여기에 표시 -->
+            <h2>AI 응답</h2>
+            <p>여기에 전체 AI 응답이 표시됩니다.</p>
+        </div>
+        <div class="box">
+            <h2>원본 텍스트</h2>
+            <textarea class="chat-text" placeholder="여기에 텍스트를 입력하세요..."></textarea>
+            <button id="chat-button" class="actionButton" disabled>전송</button>
+        </div>
+
+    </div>
+
+    <div class="right-panel" id="chat-container">
+        <div class="section" id="translation">
+            <h2>번역</h2>
+            <p>여기에 번역된 텍스트가 표시됩니다.</p>
+            <button class="deleteButton" onclick="deleteSection('translation')">삭제</button>
+            <button class="storeButton" onclick="">저장</button>
+        </div>
+        <div class="section" id="summary">
+            <h2>핵심 정리</h2>
+            <p>여기에 핵심 정리된 내용이 표시됩니다.</p>
+            <button class="deleteButton" onclick="deleteSection('summary')">삭제</button>
+            <button class="storeButton" onclick="">저장</button>
+        </div>
+        <div class="section" id="keywords">
+            <h2>핵심 단어</h2>
+            <p>여기에 핵심 단어가 표시됩니다.</p>
+            <button class="deleteButton" onclick="deleteSection('keywords')">삭제</button>
+            <button class="storeButton" onclick="">저장</button>
+        </div>
+        <div class="section" id="examples">
+            <h2>예제</h2>
+            <p>여기에 예제가 표시됩니다.</p>
+            <button class="deleteButton" onclick="deleteSection('examples')">삭제</button>
+            <button class="storeButton" onclick="">저장</button>
+        </div>
+        <button class="allStoreButton" onclick="">전체 저장</button>
+    </div>
+
+</div>
+
+</body>
+</html>

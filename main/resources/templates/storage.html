@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>보관함 페이지</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background-color: #f2f2f2;
+      color: #333;
+      margin: 0;
+      padding: 0;
+    }
+    .container {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      padding: 20px;
+    }
+    .left-panel, .right-panel {
+      flex: 1;
+      padding: 20px;
+      background-color: #fff;
+      border-radius: 10px;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    }
+    .logo {
+      margin-bottom: 20px;
+      text-align: center;
+    }
+    .logo h1 {
+      font-size: 24px;
+      color: #ff6f61;
+    }
+    .box, .section {
+      margin-bottom: 20px;
+      padding: 20px;
+      background-color: #fff;
+      border-radius: 10px;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    }
+    .box {
+      height: 80%;
+    }
+    .section {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+    .buttons {
+      display: flex;
+      justify-content: flex-start;
+      align-items: center;
+      margin-bottom: 20px;
+    }
+    .buttons button {
+      padding: 8px 12px;
+      margin-right: 10px;
+      border: none;
+      background: linear-gradient(45deg, #ff6f61, #ff8f81);
+      color: white;
+      cursor: pointer;
+      border-radius: 5px;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+      transition: all 0.3s ease;
+    }
+    .buttons button:hover {
+      background: linear-gradient(45deg, #ff8f81, #ff6f61);
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.15);
+    }
+    .section button {
+      padding: 10px 20px;
+      border: none;
+      background: linear-gradient(45deg, #ff6f61, #ff8f81);
+      color: white;
+      cursor: pointer;
+      border-radius: 5px;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+      transition: all 0.3s ease;
+    }
+    .section button:hover {
+      background: linear-gradient(45deg, #ff8f81, #ff6f61);
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.15);
+    }
+    .deleteButton {
+      width: 100px;
+      margin-left: auto;
+    }
+  </style>
+</head>
+<body>
+<div class="container">
+  <div class="left-panel">
+    <div class="buttons">
+      <button id="homeButton">홈</button>
+    </div>
+    <div class="logo">
+      <h1>로고</h1>
+    </div>
+    <div class="box" id="originalText">
+      <h2 style="height: 650px;">원본 텍스트 출력 영역</h2>
+      <p>여기에 원본 텍스트가 표시됩니다.</p>
+    </div>
+  </div>
+  <div class="right-panel">
+    <div class="section" id="translation">
+      <h2>번역</h2>
+      <p>여기에 번역된 텍스트가 표시됩니다.</p>
+      <button class="deleteButton" onclick="deleteSection('translation')">삭제</button>
+    </div>
+    <div class="section" id="summary">
+      <h2>핵심 정리</h2>
+      <p>여기에 핵심 정리된 내용이 표시됩니다.</p>
+      <button class="deleteButton" onclick="deleteSection('summary')">삭제</button>
+    </div>
+    <div class="section" id="keywords">
+      <h2>핵심 단어</h2>
+      <p>여기에 핵심 단어가 표시됩니다.</p>
+      <button class="deleteButton" onclick="deleteSection('keywords')">삭제</button>
+    </div>
+    <div class="section" id="examples">
+      <h2>예제</h2>
+      <p>여기에 예제가 표시됩니다.</p>
+      <button class="deleteButton" onclick="deleteSection('examples')">삭제</button>
+    </div>
+  </div>
+</div>
+
+<script>
+  document.getElementById('homeButton').addEventListener('click', function() {
+    window.location.href = [[@{/main}]]; // 메인 페이지 URL로 변경하세요
+  });
+
+    function deleteSection(sectionId) {
+      document.getElementById(sectionId).querySelector('p').innerHTML = '';
+    }
+</script>
+</body>
+</html>

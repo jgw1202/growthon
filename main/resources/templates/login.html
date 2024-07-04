@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>로그인 페이지</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f2f2f2;
+            color: #333;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+        .login-container {
+            background-color: #fff;
+            padding: 40px;
+            border-radius: 10px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            width: 300px;
+            text-align: center;
+        }
+        .login-container h1 {
+            margin-bottom: 20px;
+            font-size: 24px;
+            color: #ff6f61;
+        }
+        .login-container input[type="email"],
+        .login-container input[type="password"] {
+            width: calc(100% - 20px);
+            padding: 10px;
+            margin-bottom: 20px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-size: 16px;
+        }
+        .login-container button {
+            width: 100%;
+            padding: 10px;
+            border: none;
+            background: linear-gradient(45deg, #ff6f61, #ff8f81);
+            color: white;
+            cursor: pointer;
+            border-radius: 5px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+            font-size: 16px;
+            margin-bottom: 10px; /* 간격 추가 */
+        }
+        .login-container button:hover {
+            background: linear-gradient(45deg, #ff8f81, #ff6f61);
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.15);
+        }
+        .login-container .signup-button {
+            background: none;
+            color: #ff6f61;
+            border: 1px solid #ff6f61;
+            margin-top: 10px;
+        }
+        .login-container .signup-button:hover {
+            background: #ff6f61;
+            color: white;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.15);
+        }
+    </style>
+</head>
+<body>
+<div class="login-container">
+    <h1>LOGIN</h1>
+    <form th:action="@{/login}" method="post">
+        <input type="email" name="username" placeholder="이메일 주소" required>
+        <input type="password" name="password" placeholder="비밀번호" required>
+        <button type="submit">SUBMIT</button>
+        <button type="button" class="signup-button" onclick="location.href='/signup'">회원가입</button>
+    </form>
+</div>
+</body>
+</html>

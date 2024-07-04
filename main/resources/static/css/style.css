@@ -1,0 +1,237 @@
+body {
+  font-family: 'Pretendard', sans-serif;
+  background-color: #f2f2f2;
+  color: #333;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+nav {
+  position: fixed;
+  width: 100%;
+  top: 0;
+  margin-bottom: 4px;
+  background-color: rgba(255, 255, 255, 0.918);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  padding: 10px 20px;
+  z-index: 10000;
+}
+
+ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: left;
+}
+
+li {
+  display: inline-block;
+  margin: 10px;
+  text-align: center;
+  vertical-align: middle;
+}
+
+a {
+  display: inline-block;
+  text-decoration: none;
+  color: black;
+  font-weight: bold;
+  vertical-align: middle;
+  height: 26px;
+}
+
+span {
+  display: inline-block;
+  vertical-align: middle;
+  margin-top: 4px;
+}
+
+.container {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  padding: 20px;
+  width: 100%;
+  height: calc(100vh - 80px); /* nav와의 여백 포함 */
+  margin-top: 60px;
+}
+
+.left-panel, .right-panel {
+  flex: 1;
+  padding: 20px;
+  background-color: #fff;
+  border-radius: 10px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  margin: 10px;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  box-sizing: border-box;
+}
+
+.logo {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.logo img {
+  width: 100px;
+  height: auto;
+}
+
+.box {
+  flex: 1;
+  padding: 20px;
+  background-color: #fff;
+  border-radius: 10px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  margin-bottom: 20px;
+  display: flex;
+  flex-direction: column;
+}
+
+.box textarea {
+  flex: 1;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font-size: 14px;
+  resize: none;
+}
+
+.section {
+  margin-bottom: 20px;
+  padding: 20px;
+  background-color: #f9f9f9;
+  border-radius: 10px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.section h2 {
+  margin-top: 0;
+}
+
+.deleteButton {
+  padding: 5px 10px;
+  border: none;
+  background-color: #ff6f61;
+  color: white;
+  cursor: pointer;
+  border-radius: 5px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease;
+}
+
+
+
+.deleteButton:hover {
+  background-color: #ff8f81;
+}
+
+.storeButton {
+  padding: 5px 10px;
+  border: none;
+  background-color: #748EE8;
+  color: white;
+  cursor: pointer;
+  border-radius: 5px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease;
+}
+
+.storeButton:hover {
+  background-color: #9EB0E8;
+}
+
+.allStoreButton {
+  padding: 5px 10px;
+  border: none;
+  background-color: #748EE8;
+  color: white;
+  cursor: pointer;
+  border-radius: 5px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease;
+}
+
+.allStoreButton:hover {
+  background-color: #9EB0E8;
+}
+
+.info-message {
+  text-align: center;
+  margin-top: 20px;
+  color: #666;
+}
+
+.rectangle {
+  width: 50px;
+  height: 5px;
+  background-color: #ff6f61;
+  margin: 5px auto;
+}
+
+.chat {
+  display: flex;
+  align-items: flex-start;
+  padding: 10px;
+  margin: 10px 0;
+  border-radius: 10px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.my-chat {
+  background-color: #e0f7fa;
+  align-self: flex-end;
+}
+
+.gpt-chat {
+  background-color: #ffe0b2;
+}
+
+.profile {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  margin-right: 10px;
+}
+
+.chat-name {
+  font-weight: bold;
+  margin-bottom: 5px;
+}
+
+.chat-log {
+  flex: 1;
+}
+
+.spinner {
+  width: 20px;
+  height: 20px;
+}
+
+.actionButton {
+  background-color: gray;
+  border: none;
+  color: white;
+  padding: 10px 20px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  cursor: not-allowed;
+  border-radius: 4px;
+}
+
+.actionButton.enabled {
+  background-color: black;
+  cursor: pointer;
+}
